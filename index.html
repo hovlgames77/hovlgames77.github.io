@@ -3,191 +3,546 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>HOVL Games</title>
+  <title>HOVL GAMES</title>
 
   <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
-    body{
-      background:#0b0f19;
-      color:white;
-      font-family:Arial, sans-serif;
-      overflow-x:hidden;
+    html {
+      scroll-behavior: smooth;
     }
 
-    header{
-      width:100%;
-      height:100vh;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      text-align:center;
+    body {
+      font-family: Arial, sans-serif;
+      background: #030712;
+      color: #ffffff;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 72px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 64px;
+      z-index: 100;
+      background: rgba(3, 7, 18, 0.55);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav-logo {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+
+    .nav-menu {
+      display: flex;
+      gap: 34px;
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: #cbd5e1;
+    }
+
+    .nav-menu a:hover {
+      color: #5ee7ff;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 8% 60px;
+      overflow: hidden;
       background:
-      linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)),
-      url('https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=2070&auto=format&fit=crop');
-      background-size:cover;
-      background-position:center;
+        linear-gradient(90deg, rgba(3,7,18,0.96) 0%, rgba(3,7,18,0.78) 38%, rgba(3,7,18,0.35) 100%),
+        url("hero-bg.png");
+      background-size: cover;
+      background-position: center;
     }
 
-    .hero{
-      max-width:800px;
-      padding:20px;
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 75% 45%, rgba(30, 144, 255, 0.32), transparent 35%),
+        radial-gradient(circle at 45% 80%, rgba(96, 165, 250, 0.18), transparent 30%);
+      pointer-events: none;
     }
 
-    .hero h1{
-      font-size:72px;
-      margin-bottom:20px;
-      letter-spacing:2px;
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      max-width: 680px;
     }
 
-    .hero p{
-      font-size:22px;
-      color:#cfcfcf;
-      line-height:1.6;
-      margin-bottom:30px;
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 22px;
+      color: #5ee7ff;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 3px;
     }
 
-    .btn{
-      display:inline-block;
-      padding:14px 30px;
-      background:#5b7cff;
-      color:white;
-      text-decoration:none;
-      border-radius:12px;
-      transition:0.3s;
-      font-weight:bold;
+    .hero h1 {
+      font-size: clamp(48px, 8vw, 104px);
+      line-height: 0.95;
+      font-weight: 900;
+      letter-spacing: -3px;
+      text-shadow: 0 0 30px rgba(94,231,255,0.28);
+      margin-bottom: 24px;
     }
 
-    .btn:hover{
-      background:#7f97ff;
-      transform:translateY(-2px);
+    .hero-sub {
+      font-size: clamp(18px, 2vw, 28px);
+      font-weight: 700;
+      color: #e5e7eb;
+      margin-bottom: 14px;
     }
 
-    section{
-      padding:100px 20px;
-      max-width:1200px;
-      margin:auto;
+    .hero-desc {
+      font-size: 18px;
+      line-height: 1.8;
+      color: #aeb9cb;
+      margin-bottom: 34px;
     }
 
-    .section-title{
-      font-size:42px;
-      margin-bottom:40px;
-      text-align:center;
+    .hero-logo {
+      width: min(420px, 90%);
+      margin: 10px 0 28px;
+      filter: drop-shadow(0 0 20px rgba(255, 209, 102, 0.35));
     }
 
-    .cards{
-      display:grid;
-      grid-template-columns:repeat(auto-fit, minmax(280px,1fr));
-      gap:24px;
+    .btn-row {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
     }
 
-    .card{
-      background:#151c2f;
-      border-radius:20px;
-      padding:30px;
-      transition:0.3s;
+    .btn {
+      padding: 15px 26px;
+      border-radius: 999px;
+      font-weight: 900;
+      letter-spacing: 0.5px;
+      transition: 0.25s;
+      border: 1px solid rgba(255,255,255,0.18);
     }
 
-    .card:hover{
-      transform:translateY(-6px);
-      background:#1d2742;
+    .btn-primary {
+      background: linear-gradient(135deg, #0ea5e9, #2563eb);
+      box-shadow: 0 0 25px rgba(37,99,235,0.45);
     }
 
-    .card h3{
-      margin-bottom:14px;
-      font-size:24px;
+    .btn-secondary {
+      background: rgba(255,255,255,0.08);
+      color: #e5e7eb;
     }
 
-    .card p{
-      color:#bdbdbd;
-      line-height:1.6;
+    .btn:hover {
+      transform: translateY(-3px);
     }
 
-    footer{
-      padding:40px 20px;
-      text-align:center;
-      color:#8a8a8a;
-      border-top:1px solid rgba(255,255,255,0.08);
+    .hero-character {
+      position: absolute;
+      right: 6%;
+      bottom: 0;
+      z-index: 2;
+      width: min(45vw, 620px);
+      max-height: 88vh;
+      object-fit: contain;
+      filter: drop-shadow(0 0 36px rgba(56,189,248,0.38));
     }
 
-    @media(max-width:768px){
+    section {
+      padding: 110px 8%;
+      position: relative;
+    }
 
-      .hero h1{
-        font-size:46px;
+    .section-head {
+      max-width: 900px;
+      margin-bottom: 46px;
+    }
+
+    .section-label {
+      color: #5ee7ff;
+      font-size: 13px;
+      font-weight: 900;
+      letter-spacing: 3px;
+      margin-bottom: 14px;
+    }
+
+    .section-title {
+      font-size: clamp(34px, 5vw, 64px);
+      font-weight: 900;
+      letter-spacing: -2px;
+      margin-bottom: 18px;
+    }
+
+    .section-desc {
+      font-size: 18px;
+      line-height: 1.8;
+      color: #aeb9cb;
+    }
+
+    .dark-section {
+      background: linear-gradient(180deg, #030712, #07111f);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .card {
+      min-height: 230px;
+      padding: 34px;
+      border-radius: 26px;
+      background: linear-gradient(180deg, rgba(15,23,42,0.92), rgba(15,23,42,0.48));
+      border: 1px solid rgba(148,163,184,0.16);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.28);
+      transition: 0.25s;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(94,231,255,0.45);
+      box-shadow: 0 25px 60px rgba(14,165,233,0.16);
+    }
+
+    .card-number {
+      font-size: 14px;
+      color: #5ee7ff;
+      font-weight: 900;
+      margin-bottom: 24px;
+    }
+
+    .card h3 {
+      font-size: 24px;
+      margin-bottom: 14px;
+    }
+
+    .card p {
+      color: #aeb9cb;
+      line-height: 1.8;
+      font-size: 16px;
+    }
+
+    .project {
+      background:
+        linear-gradient(90deg, rgba(3,7,18,0.92), rgba(3,7,18,0.72)),
+        url("hero-bg.png");
+      background-size: cover;
+      background-position: center;
+    }
+
+    .project-wrap {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    .project-logo {
+      width: min(520px, 100%);
+      margin-bottom: 24px;
+      filter: drop-shadow(0 0 24px rgba(255, 209, 102, 0.35));
+    }
+
+    .feature-list {
+      display: grid;
+      gap: 16px;
+      margin-top: 28px;
+    }
+
+    .feature {
+      padding: 18px 20px;
+      border-left: 3px solid #38bdf8;
+      background: rgba(15,23,42,0.72);
+      border-radius: 12px;
+      color: #cbd5e1;
+      line-height: 1.6;
+    }
+
+    .project-panel {
+      padding: 34px;
+      border-radius: 30px;
+      background: rgba(2,6,23,0.72);
+      border: 1px solid rgba(94,231,255,0.22);
+      box-shadow: 0 0 70px rgba(14,165,233,0.14);
+    }
+
+    .project-panel img {
+      width: 100%;
+      display: block;
+      border-radius: 24px;
+    }
+
+    .careers {
+      text-align: center;
+      background: #030712;
+    }
+
+    .careers .section-head {
+      margin: 0 auto 42px;
+    }
+
+    .contact {
+      background: linear-gradient(135deg, #07111f, #030712);
+      text-align: center;
+    }
+
+    .contact-box {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 50px 30px;
+      border-radius: 32px;
+      background: rgba(15,23,42,0.76);
+      border: 1px solid rgba(94,231,255,0.22);
+      box-shadow: 0 0 70px rgba(14,165,233,0.12);
+    }
+
+    .contact-mail {
+      display: inline-block;
+      margin-top: 24px;
+      font-size: 22px;
+      font-weight: 900;
+      color: #5ee7ff;
+    }
+
+    footer {
+      padding: 38px 8%;
+      color: #64748b;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      background: #020617;
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .fade {
+      opacity: 0;
+      transform: translateY(24px);
+      animation: fadeUp 0.9s ease forwards;
+    }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 960px) {
+      .nav {
+        padding: 0 22px;
       }
 
-      .hero p{
-        font-size:18px;
+      .nav-menu {
+        display: none;
       }
 
-      .section-title{
-        font-size:32px;
+      .hero {
+        padding: 110px 24px 420px;
+        background-position: center;
       }
 
+      .hero-character {
+        right: 50%;
+        transform: translateX(50%);
+        width: 82vw;
+        max-height: 430px;
+      }
+
+      .grid,
+      .project-wrap {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 82px 24px;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <header>
-    <div class="hero">
-      <h1>HOVL GAMES</h1>
+  <nav class="nav">
+    <a href="#" class="nav-logo">HOVL GAMES</a>
 
-      <p>
-        We create immersive action RPG experiences.<br>
-        Small Team. Big Vision.
+    <div class="nav-menu">
+      <a href="#about">ABOUT</a>
+      <a href="#project">PROJECT</a>
+      <a href="#tech">TECH</a>
+      <a href="#careers">CAREERS</a>
+      <a href="#contact">CONTACT</a>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-content fade">
+      <span class="eyebrow">INDIE GAME STUDIO</span>
+
+      <h1>Small Team.<br>Big Vision.</h1>
+
+      <p class="hero-sub">우리는 성장의 재미를 만드는 개발팀입니다</p>
+
+      <img src="game-logo.png" alt="나혼자헌터키우기 로고" class="hero-logo" />
+
+      <p class="hero-desc">
+        단 한 명의 헌터, 끝없는 성장의 쾌감을 경험하라!<br>
+        HOVL GAMES는 강렬한 전투 감각과 반복 성장의 재미를 중심으로
+        완성도 높은 RPG 경험을 만들어갑니다.
       </p>
 
-      <a class="btn" href="#games">
-        View Project
-      </a>
+      <div class="btn-row">
+        <a href="#project" class="btn btn-primary">VIEW PROJECT</a>
+        <a href="#contact" class="btn btn-secondary">CONTACT US</a>
+      </div>
     </div>
+
+    <img src="hero-character.png" alt="헌터 캐릭터" class="hero-character" />
   </header>
 
-  <section id="games">
-
-    <h2 class="section-title">
-      Our Projects
-    </h2>
-
-    <div class="cards">
-
-      <div class="card">
-        <h3>나혼자헌터키우기</h3>
-
-        <p>
-          Fast-paced idle RPG focused on growth loops,
-          powerful combat feedback and scalable progression systems.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>Data Driven Design</h3>
-
-        <p>
-          Built with scalable balancing structures and live-service friendly architecture.
-        </p>
-      </div>
-
-      <div class="card">
-        <h3>AI Assisted Pipeline</h3>
-
-        <p>
-          Leveraging AI tools to accelerate production while maximizing gameplay quality.
-        </p>
-      </div>
-
+  <section id="about" class="dark-section">
+    <div class="section-head">
+      <div class="section-label">ABOUT</div>
+      <h2 class="section-title">작지만 강한 개발팀</h2>
+      <p class="section-desc">
+        HOVL GAMES는 소규모 팀의 빠른 실행력과 명확한 방향성을 바탕으로,
+        플레이어가 짧은 시간 안에도 성장의 성취감을 느낄 수 있는 게임을 개발합니다.
+      </p>
     </div>
 
+    <div class="grid">
+      <div class="card">
+        <div class="card-number">01</div>
+        <h3>Growth Experience</h3>
+        <p>반복 성장 구조와 빠른 보상 체계를 통해 플레이어가 계속 강해지는 재미를 설계합니다.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-number">02</div>
+        <h3>Combat Impact</h3>
+        <p>타격감, 연출, 전투 흐름을 중심으로 몰입감 있는 액션 RPG 경험을 만듭니다.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-number">03</div>
+        <h3>Live Ready</h3>
+        <p>콘텐츠 확장과 밸런싱을 고려한 구조로 장기 운영 가능한 게임을 지향합니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="project" class="project">
+    <div class="project-wrap">
+      <div>
+        <div class="section-label">PROJECT</div>
+        <img src="game-logo.png" alt="나혼자헌터키우기" class="project-logo" />
+
+        <h2 class="section-title">끝없는 성장의 쾌감</h2>
+
+        <p class="section-desc">
+          나혼자헌터키우기는 단 한 명의 헌터가 끊임없이 강해지는 과정을 중심으로 한
+          방치형 액션 RPG입니다. 짧은 플레이에서도 성취감을 느낄 수 있도록
+          전투, 성장, 보상 흐름을 밀도 있게 설계합니다.
+        </p>
+
+        <div class="feature-list">
+          <div class="feature">빠른 성장 루프와 직관적인 보상 구조</div>
+          <div class="feature">강렬한 전투 연출과 헌터 판타지 감성</div>
+          <div class="feature">지속적인 콘텐츠 확장을 고려한 데이터 기반 설계</div>
+        </div>
+      </div>
+
+      <div class="project-panel">
+        <img src="hero-bg.png" alt="게임 배경 이미지" />
+      </div>
+    </div>
+  </section>
+
+  <section id="tech" class="dark-section">
+    <div class="section-head">
+      <div class="section-label">TECH</div>
+      <h2 class="section-title">기술과 구조로 완성도를 높입니다</h2>
+      <p class="section-desc">
+        작은 팀일수록 구조가 중요합니다. HOVL GAMES는 유지보수와 확장성을 고려한 개발 방식으로
+        빠르게 만들고, 꾸준히 개선할 수 있는 게임을 지향합니다.
+      </p>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <div class="card-number">UNITY</div>
+        <h3>Unity Client</h3>
+        <p>모바일 환경에 최적화된 클라이언트 구조와 안정적인 게임 플레이 경험을 설계합니다.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-number">DATA</div>
+        <h3>Data Driven</h3>
+        <p>밸런싱, 성장 수치, 콘텐츠 확장을 데이터 기반으로 관리해 운영 효율을 높입니다.</p>
+      </div>
+
+      <div class="card">
+        <div class="card-number">AI</div>
+        <h3>AI Assisted</h3>
+        <p>반복 작업과 리소스 제작 보조에 AI를 활용해 소규모 팀의 제작 효율을 높입니다.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="careers" class="careers">
+    <div class="section-head">
+      <div class="section-label">CAREERS</div>
+      <h2 class="section-title">함께 성장할 준비</h2>
+      <p class="section-desc">
+        현재 HOVL GAMES는 소규모 개발팀으로 프로젝트 완성도 향상에 집중하고 있습니다.
+        추후 더 큰 비전을 함께 만들어갈 동료를 만날 준비를 하고 있습니다.
+      </p>
+    </div>
+
+    <a href="#contact" class="btn btn-primary">CONTACT</a>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="contact-box">
+      <div class="section-label">CONTACT</div>
+      <h2 class="section-title">Let’s Build Something Great</h2>
+      <p class="section-desc">
+        프로젝트, 협업, 문의 사항이 있다면 아래 메일로 연락해주세요.
+      </p>
+
+      <a href="mailto:hovlgames77@gmail.com" class="contact-mail">
+        hovlgames77@gmail.com
+      </a>
+    </div>
   </section>
 
   <footer>
-    © 2026 HOVL GAMES. All Rights Reserved.
+    <div>© 2026 HOVL GAMES. All Rights Reserved.</div>
+    <div>Small Team. Big Vision.</div>
   </footer>
 
 </body>
