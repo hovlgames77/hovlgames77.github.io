@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HOVL Games</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      background:#0b0f19;
+      color:white;
+      font-family:Arial, sans-serif;
+      overflow-x:hidden;
+    }
+
+    header{
+      width:100%;
+      height:100vh;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      text-align:center;
+      background:
+      linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)),
+      url('https://images.unsplash.com/photo-1511512578047-dfb367046420?q=80&w=2070&auto=format&fit=crop');
+      background-size:cover;
+      background-position:center;
+    }
+
+    .hero{
+      max-width:800px;
+      padding:20px;
+    }
+
+    .hero h1{
+      font-size:72px;
+      margin-bottom:20px;
+      letter-spacing:2px;
+    }
+
+    .hero p{
+      font-size:22px;
+      color:#cfcfcf;
+      line-height:1.6;
+      margin-bottom:30px;
+    }
+
+    .btn{
+      display:inline-block;
+      padding:14px 30px;
+      background:#5b7cff;
+      color:white;
+      text-decoration:none;
+      border-radius:12px;
+      transition:0.3s;
+      font-weight:bold;
+    }
+
+    .btn:hover{
+      background:#7f97ff;
+      transform:translateY(-2px);
+    }
+
+    section{
+      padding:100px 20px;
+      max-width:1200px;
+      margin:auto;
+    }
+
+    .section-title{
+      font-size:42px;
+      margin-bottom:40px;
+      text-align:center;
+    }
+
+    .cards{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(280px,1fr));
+      gap:24px;
+    }
+
+    .card{
+      background:#151c2f;
+      border-radius:20px;
+      padding:30px;
+      transition:0.3s;
+    }
+
+    .card:hover{
+      transform:translateY(-6px);
+      background:#1d2742;
+    }
+
+    .card h3{
+      margin-bottom:14px;
+      font-size:24px;
+    }
+
+    .card p{
+      color:#bdbdbd;
+      line-height:1.6;
+    }
+
+    footer{
+      padding:40px 20px;
+      text-align:center;
+      color:#8a8a8a;
+      border-top:1px solid rgba(255,255,255,0.08);
+    }
+
+    @media(max-width:768px){
+
+      .hero h1{
+        font-size:46px;
+      }
+
+      .hero p{
+        font-size:18px;
+      }
+
+      .section-title{
+        font-size:32px;
+      }
+
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="hero">
+      <h1>HOVL GAMES</h1>
+
+      <p>
+        We create immersive action RPG experiences.<br>
+        Small Team. Big Vision.
+      </p>
+
+      <a class="btn" href="#games">
+        View Project
+      </a>
+    </div>
+  </header>
+
+  <section id="games">
+
+    <h2 class="section-title">
+      Our Projects
+    </h2>
+
+    <div class="cards">
+
+      <div class="card">
+        <h3>나혼자헌터키우기</h3>
+
+        <p>
+          Fast-paced idle RPG focused on growth loops,
+          powerful combat feedback and scalable progression systems.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>Data Driven Design</h3>
+
+        <p>
+          Built with scalable balancing structures and live-service friendly architecture.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>AI Assisted Pipeline</h3>
+
+        <p>
+          Leveraging AI tools to accelerate production while maximizing gameplay quality.
+        </p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <footer>
+    © 2026 HOVL GAMES. All Rights Reserved.
+  </footer>
+
+</body>
+</html>
